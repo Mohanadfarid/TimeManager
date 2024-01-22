@@ -1,3 +1,7 @@
+@import "./styles/variables.scss";
+body {
+  background-color: $light-grey;
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;

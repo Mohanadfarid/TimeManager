@@ -1,0 +1,30 @@
+@import "../../styles/variables.scss";
+
+.timer-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 6px;
+
+  //   remove later
+  width: 300px;
+  height: 300px;
+  //reomve the above
+
+  box-shadow: 1px 1px rgba(211, 211, 211, 0.5),
+    -1px -1px rgba(211, 211, 211, 0.5);
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: $light-grey;
+    transform: translateY(-5px);
+    transition: transform 0.3s;
+  }
+
+  &__header {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
