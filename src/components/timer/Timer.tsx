@@ -42,7 +42,7 @@ const Timer: FunctionComponent<TimerProps> = ({
     <div className="timer-card">
       <div className="timer-card__header">
         <p>{name}</p>
-        <i onClick={handleToggleFullScreen}>{toggleFullScreenButton}</i>
+        <i className="expand-shrink-button" onClick={handleToggleFullScreen}>{toggleFullScreenButton}</i>
       </div>
 
       <CircularProgressBar totalSeconds={1000} passedSeconds={500}>

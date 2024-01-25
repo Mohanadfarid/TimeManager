@@ -31,7 +31,16 @@
     font-weight: 600;
   }
 
-  &__time{
+  .expand-shrink-button {
+    color: black;
+    border-radius: 10px;
+    padding: 2px;
+    &:hover {
+      background-color: $dark-grey;
+    }
+  }
+
+  &__time {
     font-size: 35px;
     font-weight: 600;
   }
@@ -55,6 +64,7 @@
     padding: 5px;
     font-size: 18px;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2), -1px -1px 1px rgba(0, 0, 0, 0.1);
+    color: black;
 
     &:hover {
       background-color: $dark-grey;
