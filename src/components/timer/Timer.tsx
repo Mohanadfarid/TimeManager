@@ -5,6 +5,7 @@ import { BiSolidCaretRightCircle } from "react-icons/bi";
 import { CgExpand } from "react-icons/cg";
 import { GrContract } from "react-icons/gr";
 import "./timer.scss";
+import CircularProgressBar from "../CircularProgressBar/CircularProgressBar";
 interface TimerProps {
   name: string;
   hours: number;
@@ -43,12 +44,16 @@ const Timer: FunctionComponent<TimerProps> = ({
         <p>{name}</p>
         <i onClick={handleToggleFullScreen}>{toggleFullScreenButton}</i>
       </div>
-      <div>
-        {hours}:{minutes}:{seconds}
-      </div>
-      <div>
+
+      <CircularProgressBar totalSeconds={1000} passedSeconds={500}>
+        <p className="timer-card__time">
+          {hours}:{minutes}:{seconds}
+        </p>
+      </CircularProgressBar>
+
+      <div className="timer-card__controlles">
         <i onClick={handleTogglePause}>{togglePauseButton}</i>
-        <i>
+        <i className="reset-button">
           <RxReset />
         </i>
       </div>

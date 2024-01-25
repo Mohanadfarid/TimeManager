@@ -1,6 +1,7 @@
 @import "../../styles/variables.scss";
 
 .timer-card {
+  transform: scale();
   background-color: white;
   border-radius: 10px;
   padding: 10px;
@@ -8,23 +9,55 @@
 
   //   remove later
   width: 300px;
-  height: 300px;
   //reomve the above
 
   box-shadow: 1px 1px rgba(211, 211, 211, 0.5),
     -1px -1px rgba(211, 211, 211, 0.5);
-  transition: all 0.3s;
+  transition: transform 0.3s;
 
   &:hover {
-    background-color: $light-grey;
+    background-color: $hoverd-grey;
     transform: translateY(-5px);
-    transition: transform 0.3s;
+
+    .inner {
+      background-color: $hoverd-grey;
+    }
   }
 
   &__header {
-    border: 1px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: 600;
+  }
+
+  &__time{
+    font-size: 35px;
+    font-weight: 600;
+  }
+
+  &__controlles {
+    display: flex;
+    justify-content: center;
+  }
+
+  i {
+    cursor: pointer;
+    color: $main-blue;
+    margin: 0 5px;
+    :hover {
+      opacity: 0.9;
+    }
+  }
+
+  .reset-button {
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 18px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2), -1px -1px 1px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background-color: $dark-grey;
+    }
   }
 }
