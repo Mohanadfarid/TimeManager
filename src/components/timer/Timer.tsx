@@ -40,8 +40,12 @@ const Timer: FunctionComponent<TimerProps> = ({
   const handleTogglePause = () => {
     setIsPaused((prevState) => !prevState);
     //handle if the count down is already finished
-    if(ActiveTime.hours===0&&ActiveTime.minutes===0&&ActiveTime.seconds===0){
-      resetTimer()
+    if (
+      ActiveTime.hours === 0 &&
+      ActiveTime.minutes === 0 &&
+      ActiveTime.seconds === 0
+    ) {
+      resetTimer();
     }
   };
 
@@ -56,17 +60,20 @@ const Timer: FunctionComponent<TimerProps> = ({
   ): number => {
     return hours * 60 * 60 + minutes * 60 + seconds;
   };
-
   const resetTimer = () => {
     setActiveTime({ hours, minutes, seconds });
   };
 
-  const togglePauseButton: ReactNode = (
-    <>{isPaused ? <BiSolidCaretRightCircle /> : <FaCirclePause />}</>
+  const togglePauseButton: ReactNode = isPaused ? (
+    <BiSolidCaretRightCircle />
+  ) : (
+    <FaCirclePause />
   );
-
-  const toggleFullScreenButton: ReactNode = (
-    <>{isFullScreen ? <GrContract /> : <CgExpand />}</>
+  
+  const toggleFullScreenButton: ReactNode = isFullScreen ? (
+    <GrContract />
+  ) : (
+    <CgExpand />
   );
 
   useEffect(() => {
