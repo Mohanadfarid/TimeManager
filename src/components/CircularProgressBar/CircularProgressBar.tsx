@@ -35,7 +35,7 @@ const CircularProgressBar: FunctionComponent<CircularProgressBarProps> = ({
           cy={"50%"}
           r={"42%"}
           strokeLinecap="round"
-          style={{ strokeDashoffset: progress }}
+          style={{ strokeDashoffset: 580 - progress }}
         />
       </svg>
     </div>

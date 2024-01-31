@@ -34,7 +34,7 @@
     stroke-width: 16px;
     stroke-dasharray: 580;
     stroke-dashoffset: 0;
-    transition: stroke-dashoffset 0.1s ease-in-out;
+    transition: stroke-dashoffset 1s linear;
   }
 
   svg {
