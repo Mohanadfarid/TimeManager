@@ -1,0 +1,27 @@
+@import "../../../styles/variables.scss";
+.modal-overlay {
+  display: block;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.6);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.modal-content {
+  background-color: $dark-grey;
+  width: 350px;
+  min-height: 300px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.modal.closed {
+  display: none;
+}
