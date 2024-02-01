@@ -1,10 +1,11 @@
-import "./App.scss";
-import Timer from "./components/timer/Timer";
+import TimersPage from "./pages/timersPage/TimersPage";
 
 function App() {
-  return <>
-  <Timer name="timer" hours={0} minutes={1} seconds={3}  />
-  </>;
+  return (
+    <>
+      <TimersPage />
+    </>
+  );
 }
 
 export default App;
