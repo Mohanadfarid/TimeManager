@@ -10,16 +10,52 @@
 }
 .modal-content {
   background-color: $dark-grey;
-  width: 350px;
+  width: 90%;
+  max-width: 350px;
   min-height: 300px;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   border-radius: 10px;
+
+  .modal-controlles {
+    border-top: 1px solid $darker-grey;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+  }
+  .modal-btn {
+    padding: 5px 35px;
+    margin: 15px 5px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid $light-grey;
+    box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.1);
+    &:hover {
+      background-color: $hoverd-grey;
+    }
+  }
+
+  .modal-btn.submit {
+    color: white;
+    background-color: $main-blue;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  i {
+    font-size: 20px;
+    margin-right: 8px;
+  }
 }
 
 .modal.closed {
