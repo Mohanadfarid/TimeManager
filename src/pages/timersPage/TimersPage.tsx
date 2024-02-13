@@ -1,41 +1,36 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import Timer from "../../components/timer/Timer";
 import "./TimersPage.scss";
 import { LuPencil } from "react-icons/lu";
 import { IoAdd } from "react-icons/io5";
-import Modal from "../../components/modals/modal/Modal";
+import AddOrUpadateTimerModal from "../../components/modals/TimerModal/AddOrUpdateTimerModal";
+import { useTimersContext } from "../../store/Timers-context";
 interface TimersPageProps {}
 
 const TimersPage: FunctionComponent<TimersPageProps> = () => {
+  const timerCTX = useTimersContext();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   return (
     <div className="timers-page">
       <div className="timers-container">
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
-        <Timer name="timer" hours={0} minutes={0} seconds={5} />
+        {timerCTX.timers.map((timer) => (
+          <Timer
+            name={timer.name}
+            hours={timer.hours}
+            minutes={timer.minutes}
+            seconds={timer.seconds}
+          />
+        ))}
       </div>
-      <Modal>this is test for a modal compoennt</Modal>
+      <AddOrUpadateTimerModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} type="add" />
       <div className="controlles">
         <i>
           <LuPencil />
         </i>
-        <i>
+        <i onClick={()=>setIsModalOpen(true)}>
           <IoAdd />
         </i>
       </div>
-      
     </div>
   );
 };

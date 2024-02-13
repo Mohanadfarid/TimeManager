@@ -11,7 +11,7 @@ interface Timer {
   name: string;
   hours: number;
   minutes: number;
-  secondes: number;
+  seconds: number;
 }
 
 interface TimerNewData {
@@ -19,7 +19,7 @@ interface TimerNewData {
   name?: string;
   hours?: number;
   minutes?: number;
-  secondes?: number;
+  seconds?: number;
 }
 
 type TimersState = Timer[];
@@ -73,24 +73,24 @@ const timersReducer = (state: TimersState, action: ActionType) => {
     case "deleteTimer": {
       return state.filter((timer) => timer.id !== action.payload);
     }
-
+    
     case "updateTimer": {
       const filterdTimersState = state.filter(
         (timer) => timer.id !== action.payload.id
       );
-
+      
       const tartgetdTimer = state.filter(
         (timer) => timer.id === action.payload.id
       )[0];
-
+      
       const updatedTimer = {
         ...tartgetdTimer,
         ...action.payload,
       };
-
+      
       return [...filterdTimersState, updatedTimer];
     }
-
+    
     default:
       return state;
   }
@@ -100,7 +100,7 @@ interface ContextProviderProps {
   children: ReactNode;
 }
 
-const TimersContextProvider: FunctionComponent<ContextProviderProps> = ({
+export const TimersContextProvider: FunctionComponent<ContextProviderProps> = ({
   children,
 }) => {
   const [timersState, dispatch] = useReducer(timersReducer, initalState);

@@ -1,0 +1,47 @@
+@import "../../styles/variables.scss";
+
+.number-container {
+  position: relative;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0;
+  i {
+    padding: 5px;
+    margin: 0;
+    font-size: 20px;
+    position: absolute;
+    &:hover {
+      background-color: $darker-grey;
+      border-radius: 10px;
+    }
+  }
+  .up-arrow {
+    top: -40px;
+  }
+  .down-arrow {
+    bottom: -40px;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input {
+    position: relative;
+    border: 0;
+    text-align: center;
+    height: 70px;
+    width: 70px;
+    font-size: 40px;
+    font-weight: 700;
+    outline: 0;
+    color: $darker-grey;
+    &:focus {
+      background-color: $hoverd-grey;
+      color: black;
+    }
+  }
+}

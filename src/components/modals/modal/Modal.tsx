@@ -1,4 +1,7 @@
-import { useState, type FunctionComponent, type ReactNode } from "react";
+import {
+  type FunctionComponent,
+  type ReactNode,
+} from "react";
 import { createPortal } from "react-dom";
 import "./Modal.scss";
 import { LiaSave } from "react-icons/lia";
@@ -6,18 +9,26 @@ import { IoMdClose } from "react-icons/io";
 
 interface ModalProps {
   children: ReactNode;
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onSubmit: () => void;
 }
 
-const Modal: FunctionComponent<ModalProps> = ({ children, onSubmit }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(true); // the defult should be false
+const Modal: FunctionComponent<ModalProps> = ({
+  children,
+  isModalOpen,
+  setIsModalOpen,
+  onSubmit,
+}) => {
+
+
 
   const handleCloseModal = () => {
-    setIsOpen(false);
+    setIsModalOpen(false);
   };
 
   return createPortal(
-    <div className={`modal ${!isOpen && "closed"}`}>
+    <div className={`modal ${isModalOpen ? "" : "closed"}`}>
       <div onClick={handleCloseModal} className="modal-overlay"></div>
       <div className="modal-content">
         {children}

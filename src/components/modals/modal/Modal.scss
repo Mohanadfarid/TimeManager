@@ -22,13 +22,15 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
-
+  border: 1px solid $dark-grey;
+  box-shadow: 3px 3px 5px $darker-grey;
   .modal-controlles {
     border-top: 1px solid $darker-grey;
     width: 100%;
     display: flex;
     justify-content: center;
     padding-top: 10px;
+    margin-bottom: 10px;
   }
   .modal-btn {
     padding: 5px 35px;
