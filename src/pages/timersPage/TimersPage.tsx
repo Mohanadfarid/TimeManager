@@ -24,10 +24,10 @@ const TimersPage: FunctionComponent<TimersPageProps> = () => {
       </div>
       <AddOrUpadateTimerModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} type="add" />
       <div className="controlles">
-        <i>
+        <i className="timers-page-icon">
           <LuPencil />
         </i>
-        <i onClick={()=>setIsModalOpen(true)}>
+        <i className="timers-page-icon" onClick={()=>setIsModalOpen(true)}>
           <IoAdd />
         </i>
       </div>

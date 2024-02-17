@@ -32,12 +32,22 @@ const AddOrUpadateTimerModal: FunctionComponent<
   };
 
   const submitHandler = () => {
-    timerCTX.addTimer({ hours, minutes, seconds, name: timerName, id: 1 });
+    timerCTX.addTimer({
+      hours,
+      minutes,
+      seconds,
+      name: timerName,
+      id: Math.floor(Math.random() * 10000) + 1,
+    });
   };
 
   const header = type === "add" ? "Add new timer" : "Edit timer";
   return (
-    <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} onSubmit={submitHandler}>
+    <Modal
+      isModalOpen={isModalOpen}
+      setIsModalOpen={setIsModalOpen}
+      onSubmit={submitHandler}
+    >
       <div className="timers-modal-content">
         <h3>{header}</h3>
         <form action="">

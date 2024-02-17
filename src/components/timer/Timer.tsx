@@ -132,7 +132,7 @@ const Timer: FunctionComponent<TimerProps> = ({
       </CircularProgressBar>
 
       <div className="timer-card__controlles">
-        <i onClick={handleTogglePause}>{togglePauseButton}</i>
+        <i className="play-button" onClick={handleTogglePause}>{togglePauseButton}</i>
         <i className="reset-button" onClick={resetTimer}>
           <RxReset />
         </i>
