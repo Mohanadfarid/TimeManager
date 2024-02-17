@@ -16,7 +16,7 @@ interface UpdateModalProps {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   id: number;
 }
-type AddOrUpadateTimerModalProps = AddModalProps | UpdateModalProps;
+export type AddOrUpadateTimerModalProps = AddModalProps | UpdateModalProps;
 
 const AddOrUpadateTimerModal: FunctionComponent<
   AddOrUpadateTimerModalProps

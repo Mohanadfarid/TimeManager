@@ -19,14 +19,18 @@ interface Time {
 }
 
 type TimerProps = {
+  id: number;
   name: string;
+  openUpdateModalHandler: (id: number) => void;
 } & Time;
 
 const Timer: FunctionComponent<TimerProps> = ({
+  id,
   name,
   hours,
   minutes,
   seconds,
+  openUpdateModalHandler,
 }) => {
   const [isPaused, setIsPaused] = useState<boolean>(true);
   const [isFullScreen, setisFullScreen] = useState<boolean>(false);
@@ -69,7 +73,7 @@ const Timer: FunctionComponent<TimerProps> = ({
   ) : (
     <FaCirclePause />
   );
-  
+
   const toggleFullScreenButton: ReactNode = isFullScreen ? (
     <GrContract />
   ) : (
@@ -110,7 +114,7 @@ const Timer: FunctionComponent<TimerProps> = ({
   }, [ActiveTime, isPaused]);
 
   return (
-    <div className="timer-card">
+    <div className="timer-card" onClick={() => openUpdateModalHandler(id)}>
       <div className="timer-card__header">
         <p>{name}</p>
         <i className="expand-shrink-button" onClick={handleToggleFullScreen}>
@@ -132,7 +136,9 @@ const Timer: FunctionComponent<TimerProps> = ({
       </CircularProgressBar>
 
       <div className="timer-card__controlles">
-        <i className="play-button" onClick={handleTogglePause}>{togglePauseButton}</i>
+        <i className="play-button" onClick={handleTogglePause}>
+          {togglePauseButton}
+        </i>
         <i className="reset-button" onClick={resetTimer}>
           <RxReset />
         </i>
