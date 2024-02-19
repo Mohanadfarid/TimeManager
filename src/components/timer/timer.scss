@@ -1,6 +1,7 @@
 @import "../../styles/variables.scss";
 
 .timer-card {
+  z-index: 1;
   transform: scale();
   background-color: white;
   border-radius: 10px;
@@ -49,6 +50,7 @@
   }
 
   i {
+    z-index: 2;
     cursor: pointer;
     color: $main-blue;
     margin: 0 5px;

@@ -1,5 +1,6 @@
 @import "../../../styles/variables.scss";
 .modal-overlay {
+  z-index: 9;
   display: block;
   position: fixed;
   background-color: rgba(255, 255, 255, 0.6);
@@ -9,6 +10,7 @@
   bottom: 0;
 }
 .modal-content {
+  z-index: 10;
   background-color: $dark-grey;
   width: 90%;
   max-width: 350px;

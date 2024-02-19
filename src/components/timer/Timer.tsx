@@ -35,13 +35,15 @@ const Timer: FunctionComponent<TimerProps> = ({
   const [isPaused, setIsPaused] = useState<boolean>(true);
   const [isFullScreen, setisFullScreen] = useState<boolean>(false);
   const [ActiveTime, setActiveTime] = useState<Time>({
+
     // the to hold the actual value to be counted down by a 1 each second
     hours,
     minutes,
     seconds,
   });
 
-  const handleTogglePause = () => {
+  const handleTogglePause = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
     setIsPaused((prevState) => !prevState);
     //handle if the count down is already finished
     if (
@@ -49,7 +51,7 @@ const Timer: FunctionComponent<TimerProps> = ({
       ActiveTime.minutes === 0 &&
       ActiveTime.seconds === 0
     ) {
-      resetTimer();
+      resetTimer(e);
     }
   };
 
@@ -64,7 +66,8 @@ const Timer: FunctionComponent<TimerProps> = ({
   ): number => {
     return hours * 60 * 60 + minutes * 60 + seconds;
   };
-  const resetTimer = () => {
+  const resetTimer = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
     setActiveTime({ hours, minutes, seconds });
   };
 
@@ -80,21 +83,25 @@ const Timer: FunctionComponent<TimerProps> = ({
     <CgExpand />
   );
 
+  // the functionality of the timer itself
   useEffect(() => {
     let TimerInterval: number | undefined = undefined;
     if (!isPaused) {
       TimerInterval = setTimeout(() => {
+        //decrease the seconds first
         if (ActiveTime.seconds > 0) {
           setActiveTime((prevTime) => ({
             ...prevTime,
             seconds: prevTime.seconds - 1,
           }));
+          //decrease the minutes if the seconds is 0 and setting the seconds t 59
         } else if (ActiveTime.minutes > 0) {
           setActiveTime((prevTime) => ({
             ...prevTime,
             minutes: prevTime.minutes - 1,
             seconds: 59,
           }));
+          //decrease the hours if both minutes and seconds are 0 and resetting both of them to 59
         } else if (ActiveTime.hours > 0) {
           setActiveTime((prevTime) => ({
             hours: prevTime.hours - 1,
@@ -107,11 +114,15 @@ const Timer: FunctionComponent<TimerProps> = ({
         }
       }, 1000);
     }
-
     return () => {
       clearInterval(TimerInterval);
     };
   }, [ActiveTime, isPaused]);
+
+  //resetting the timer if any of the timers values changed
+  useEffect(() => {
+    setActiveTime({ hours, minutes, seconds });
+  }, [hours, minutes, seconds]);
 
   return (
     <div className="timer-card" onClick={() => openUpdateModalHandler(id)}>
