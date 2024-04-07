@@ -36,7 +36,6 @@ const AddOrUpadateTimerModal: FunctionComponent<AddOrUpadateTimerModalProps> = (
   const timerCTX = useTimersContext();
 
   useEffect(() => {
-    console.log(timerCTX.timers);
     if (type === "update") {
       const { id } = props;
       const targetedTimer = timerCTX.timers.filter(
@@ -54,23 +53,26 @@ const AddOrUpadateTimerModal: FunctionComponent<AddOrUpadateTimerModalProps> = (
   };
 
   const submitHandler = () => {
-    if (type === "add") {
-      timerCTX.addTimer({
-        hours,
-        minutes,
-        seconds,
-        name: timerName,
-        id: Math.floor(Math.random() * 10000) + 1,
-      });
-    } else {
-      const { id } = props;
-      timerCTX.updateTimer({
-        hours,
-        minutes,
-        seconds,
-        name: timerName,
-        id,
-      });
+    // submitting if only the timer has atleast one value setted for hours or minutes or seconds
+    if (hours !== 0 || minutes !== 0 || seconds !== 0) {
+      if (type === "add") {
+        timerCTX.addTimer({
+          hours,
+          minutes,
+          seconds,
+          name: timerName,
+          id: Math.floor(Math.random() * 10000) + 1,
+        });
+      } else {
+        const { id } = props;
+        timerCTX.updateTimer({
+          hours,
+          minutes,
+          seconds,
+          name: timerName,
+          id,
+        });
+      }
     }
   };
 
