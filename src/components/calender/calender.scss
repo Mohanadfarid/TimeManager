@@ -1,0 +1,49 @@
+.calender {
+  &_month-year-picker {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-bottom: 2px solid black;
+  }
+  &_day-picker {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  .monthes-controller {
+    display: inline-block;
+    border-radius: 50%;
+    padding: 1px;
+    font-weight: bolder;
+    cursor: pointer;
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+  .day-of-week {
+    margin: auto;
+    font-weight: bold;
+  }
+
+  .prefix-cell,
+  .postfix-cell {
+    color: lightgray;
+  }
+  .cell {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 2rem;
+    height: 3rem;
+  }
+  .current-month-cell {
+    &:hover {
+      background-color: lightgray;
+      cursor: pointer;
+    }
+    &.active {
+      background-color: lightblue;
+    }
+  }
+}
