@@ -1,5 +1,36 @@
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./index.scss";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import TimersPage from "./pages/timersPage/TimersPage.tsx";
+import TimersContextProvider from "./store/Timers-context.tsx";
+import StopWatchPage from "./pages/stopWatchPage/StopWatchPage.tsx";
+import AlarmPage from "./pages/alarm/AlarmPage.tsx";
+import CalenderPage from "./pages/calender/CalenderPage.tsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <TimersContextProvider>
+        <TimersPage />
+      </TimersContextProvider>
+    ),
+  },
+  {
+    path: "/alarm",
+    element: <AlarmPage />,
+  },
+  {
+    path: "/stopwatch",
+    element: <StopWatchPage />,
+  },
+  {
+    path: "/calender",
+    element: <CalenderPage />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <RouterProvider router={router} />
+);
