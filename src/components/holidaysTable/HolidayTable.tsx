@@ -8,29 +8,31 @@ interface HolidayTableProps {
 
 const HolidayTable: FunctionComponent<HolidayTableProps> = ({ holidays }) => {
   return (
-    <table className="holiday-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Date</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        {holidays &&
-          holidays.map((holiday, idx) => {
-            return (
-              <tr key={idx}>
-                <td>{holiday.name}</td>
-                <td>{holiday.description}</td>
-                <td>{holiday.date.iso}</td>
-                <td>{holiday.type}</td>
-              </tr>
-            );
-          })}
-      </tbody>
-    </table>
+    <div className="table-wrapper">
+      <table className="holiday-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {holidays &&
+            holidays.map((holiday, idx) => {
+              return (
+                <tr key={idx}>
+                  <td>{holiday.name}</td>
+                  <td>{holiday.description}</td>
+                  <td>{holiday.date.iso}</td>
+                  <td>{holiday.type}</td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
