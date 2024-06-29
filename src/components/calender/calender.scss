@@ -1,4 +1,7 @@
 .calender {
+  width: 90vw;
+  max-width: 900px;
+  margin: 2rem auto;
   &_month-year-picker {
     display: flex;
     justify-content: space-between;
@@ -36,6 +39,7 @@
     width: 100%;
     min-width: 2rem;
     height: 3rem;
+    border-radius: 10px;
   }
   .current-month-cell {
     &:hover {

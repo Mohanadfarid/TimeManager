@@ -1,6 +1,8 @@
 import { FunctionComponent, useState } from "react";
 import Calender from "../../components/calender/Calender";
-import "./calenderPage.scss"
+import "./calenderPage.scss";
+import useGetEvents from "../../hooks/useGetHolidays";
+import HolidayTable from "../../components/holidaysTable/HolidayTable";
 
 interface CalenderPageProps {}
 
@@ -19,11 +21,10 @@ const CalenderPage: FunctionComponent<CalenderPageProps> = () => {
     day: currentDate.getDate(),
   });
 
-  const ChangeDateHandler = (
-    year?: number,
-    month?: number,
-    day?: number
-  ) => {
+  const { holidaysInYear, holidaysInMonth, holidaysInDay, error } =
+    useGetEvents(date.year, date.month, date.day);
+
+  const ChangeDateHandler = (year?: number, month?: number, day?: number) => {
     setDate((prevState) => {
       const updatedStartDate = {
         ...prevState,
@@ -35,10 +36,10 @@ const CalenderPage: FunctionComponent<CalenderPageProps> = () => {
     });
   };
 
-
   return (
     <div className="page-container">
       <Calender date={date} changeDateHandler={ChangeDateHandler} />
+      <HolidayTable holidays={holidaysInYear}/>
     </div>
   );
 };

@@ -1,0 +1,20 @@
+.holiday-table {
+  overflow-x: auto;
+  width: 90vw;
+  max-width: 1200px;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  td,
+  th {
+    text-align: left;
+    padding: 1rem;
+  }
+  tr:nth-of-type(even) {
+    background-color: rgba(173, 216, 230, 0.315);
+  }
+
+  thead tr {
+    background-color: lightblue;
+  }
+  
+}
