@@ -76,20 +76,21 @@ const useGetHolidays = (year: number, month: number, day: number) => {
         setError(data);
       } else {
         setHolidaysInYear(data);
-        setHolidaysInMonth(
-          data?.filter(
-            (holiday) => holiday.date.datetime?.month === month
-          )
-        );
-        setHolidaysInDay(
-          data?.filter(
-            (holiday) => holiday.date.datetime?.day === day
-          )
-        );
       }
     };
-    fetchData();
-  }, [year, month, day]);
+     fetchData();
+  }, [year]);
+
+  useEffect(() => {
+    setHolidaysInMonth(
+      holidaysInYear?.filter(
+        (holiday) => holiday.date.datetime?.month === month
+      )
+    );
+    setHolidaysInDay(
+      holidaysInYear?.filter((holiday) => holiday.date.datetime?.day === day)
+    );
+  }, [month, day]);
   return { holidaysInYear, holidaysInMonth, holidaysInDay, error };
 };
 

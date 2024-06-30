@@ -1,4 +1,38 @@
-.page-container{
-    overflow-x: auto;  // Ensure the container allows horizontal scrolling
-
+.calender-page {
+  .page-container {
+    overflow-x: auto; // Ensure the container allows horizontal scrolling
+  }
+  .view-mode-controller {
+    width: 90vw;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .info{
+    font-weight: bold;
+  }
+  .btns-container {
+    margin: 0 1rem;
+    
+  }
+  .btn {
+    margin: 0 0.6rem;
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 1rem;
+    border: 0;
+    background-color: lightblue;
+    color: white;
+    cursor: pointer;
+    
+  }
+  .btn:hover,.btn.active{
+    background-color: rgb(72, 173, 207);
+  }
+  .btn:active{
+    transform: scale(0.9);
+  }
 }

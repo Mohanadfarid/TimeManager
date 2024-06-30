@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import Calender from "../../components/calender/Calender";
 import "./calenderPage.scss";
-import useGetEvents from "../../hooks/useGetHolidays";
+import useGetEvents, { Holiday } from "../../hooks/useGetHolidays";
 import HolidayTable from "../../components/holidaysTable/HolidayTable";
 
 interface CalenderPageProps {}
@@ -12,6 +12,15 @@ export type DateType = {
   day: number;
 };
 
+type Holidays = {
+  holidaysInYear: Holiday[];
+  holidaysInMonth: Holiday[];
+  holidaysInDay: Holiday[];
+  error: string | undefined;
+};
+
+type ViewMode = "holidaysInYear" | "holidaysInMonth" | "holidaysInDay";
+
 const currentDate = new Date();
 
 const CalenderPage: FunctionComponent<CalenderPageProps> = () => {
@@ -21,8 +30,9 @@ const CalenderPage: FunctionComponent<CalenderPageProps> = () => {
     day: currentDate.getDate(),
   });
 
-  const { holidaysInYear, holidaysInMonth, holidaysInDay, error } =
-    useGetEvents(date.year, date.month, date.day);
+  const [viewMode, setviewMode] = useState<ViewMode>("holidaysInYear");
+
+  const holidays: Holidays = useGetEvents(date.year, date.month, date.day);
 
   const ChangeDateHandler = (year?: number, month?: number, day?: number) => {
     setDate((prevState) => {
@@ -37,9 +47,32 @@ const CalenderPage: FunctionComponent<CalenderPageProps> = () => {
   };
 
   return (
-    <div className="page-container">
+    <div className="calender-page page-container">
       <Calender date={date} changeDateHandler={ChangeDateHandler} />
-      <HolidayTable holidays={holidaysInYear}/>
+      <div className="view-mode-controller">
+        <span className="info">show holidays in</span>
+        <span className="btns-container">
+          <button
+            className={`btn ${viewMode === "holidaysInYear" ? "active" : ""}`}
+            onClick={() => setviewMode("holidaysInYear")}
+          >
+            year {date.year}
+          </button>
+          <button
+            className={`btn ${viewMode === "holidaysInMonth" ? "active" : ""}`}
+            onClick={() => setviewMode("holidaysInMonth")}
+          >
+            month {date.month}
+          </button>
+          <button
+            className={`btn ${viewMode === "holidaysInDay" ? "active" : ""}`}
+            onClick={() => setviewMode("holidaysInDay")}
+          >
+            day {date.day}
+          </button>
+        </span>
+      </div>
+      <HolidayTable holidays={holidays[viewMode]} />
     </div>
   );
 };
