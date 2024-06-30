@@ -67,6 +67,7 @@ const useGetHolidays = (year: number, month: number, day: number) => {
   const [holidaysInDay, setHolidaysInDay] = useState<Holiday[]>([]);
 
   const [error, setError] = useState<string>();
+  const [loading, setloading] = useState<boolean>(false);
 
   useEffect(() => {
     //fetching all the holidays array
@@ -74,11 +75,20 @@ const useGetHolidays = (year: number, month: number, day: number) => {
       const data = await fetchHolidays(fullURL);
       if (typeof data === "string") {
         setError(data);
+        setloading(false);
       } else {
         setHolidaysInYear(data);
+        setHolidaysInMonth(
+          data?.filter((holiday) => holiday.date.datetime?.month === month)
+        );
+        setHolidaysInDay(
+          data?.filter((holiday) => holiday.date.datetime?.day === day)
+        );
+        setloading(false);
       }
     };
-     fetchData();
+    setloading(true);
+    fetchData();
   }, [year]);
 
   useEffect(() => {
@@ -91,7 +101,7 @@ const useGetHolidays = (year: number, month: number, day: number) => {
       holidaysInYear?.filter((holiday) => holiday.date.datetime?.day === day)
     );
   }, [month, day]);
-  return { holidaysInYear, holidaysInMonth, holidaysInDay, error };
+  return { holidaysInYear, holidaysInMonth, holidaysInDay, error, loading };
 };
 
 export default useGetHolidays;
