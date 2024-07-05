@@ -1,0 +1,64 @@
+@import "../../styles/variables.scss";
+.stop-watch {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  font-size: 6rem;
+  font-weight: 400;
+  width: 90vw;
+  max-width: 600px;
+  margin: 3rem auto;
+  &.disabled{
+    color: $darker-grey;
+  }
+  .description {
+    font-size: 1.5rem;
+  }
+
+  .stop-watch__hours,
+  .stop-watch__minutes,
+  .stop-watch__seconds {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0.2rem;
+    width: 25%;
+  }
+
+  .stop-watch__milliseconds {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1rem;
+    font-size: 5rem;
+    width: 25%;
+  }
+}
+.stop-watch__controlles {
+  border: 1px solid black;
+  width: fit-content;
+  margin: 1rem auto;
+  display: flex;
+  i {
+    z-index: 2;
+    cursor: pointer;
+    color: $main-blue;
+    margin: 0 5px;
+    :hover {
+      opacity: 0.9;
+    }
+  }
+  .play-button {
+    font-size: 4rem;
+  }
+  .reset-button {
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 2.6rem;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2), -1px -1px 1px rgba(0, 0, 0, 0.1);
+    color: black;
+
+    &:hover {
+      background-color: $dark-grey;
+    }
+  }
+}

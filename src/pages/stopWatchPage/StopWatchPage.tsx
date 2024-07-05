@@ -1,9 +1,16 @@
 import { FunctionComponent } from "react";
+import StopWatch from "../../components/stopWatch/StopWatch";
 
 interface StopWatchPageProps {}
 
 const StopWatchPage: FunctionComponent<StopWatchPageProps> = () => {
-  return <div>this is the stop watch page</div>;
+
+
+  return (
+    <div>
+      <StopWatch />
+    </div>
+  );
 };
 
 export default StopWatchPage;
