@@ -7,7 +7,7 @@ import TimersContextProvider from "./store/Timers-context.tsx";
 import StopWatchPage from "./pages/stopWatchPage/StopWatchPage.tsx";
 import AlarmPage from "./pages/alarm/AlarmPage.tsx";
 import CalenderPage from "./pages/calender/CalenderPage.tsx";
-import RootLayout from "./layouts/rootLayout.tsx";
+import RootLayout from "./layouts/RootLayout.tsx"
 
 const router = createBrowserRouter([
   {
