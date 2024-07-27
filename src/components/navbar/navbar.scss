@@ -1,0 +1,45 @@
+@import "../../styles/variables.scss";
+.navbar {
+  width: 15rem;
+  padding: 0 0.3rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f3f3;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  border-right: 1px solid #e5e5e5;
+
+  .navbar__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+    color: black;
+    &:hover {
+      background-color: #eaeaea;
+    }
+    &.active{
+        background-color: #eaeaea;
+    }
+    &.active::before{
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 50%;
+        border-radius: 25%;
+        background-color: $main-blue;
+    }
+  }
+
+  .navbar__icon{
+    margin-right: 1rem;
+    font-size: 1.2rem;
+  }
+}

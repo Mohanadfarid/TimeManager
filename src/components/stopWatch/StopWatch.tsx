@@ -4,8 +4,15 @@ import { formatTime } from "../../utils/timerUtils";
 import { BiSolidCaretRightCircle } from "react-icons/bi";
 import { FaCirclePause } from "react-icons/fa6";
 import { RxReset } from "react-icons/rx";
+import { RiFlag2Fill } from "react-icons/ri";
+import {
+  CheckPoint,
+  CheckPoints,
+} from "../../pages/stopWatchPage/StopWatchPage";
 
-interface StopWatchProps {}
+interface StopWatchProps {
+  setCheckPoints: React.Dispatch<React.SetStateAction<CheckPoints>>;
+}
 interface StopWatch {
   hours: number;
   minutes: number;
@@ -13,7 +20,7 @@ interface StopWatch {
   milliseconds: number;
 }
 
-const StopWatch: FunctionComponent<StopWatchProps> = () => {
+const StopWatch: FunctionComponent<StopWatchProps> = ({ setCheckPoints }) => {
   const [isPaused, setIsPaused] = useState<boolean>(true);
 
   const [stopWatchTime, setStopWatchTime] = useState<StopWatch>({
@@ -67,6 +74,17 @@ const StopWatch: FunctionComponent<StopWatchProps> = () => {
       seconds: 0,
       milliseconds: 0,
     });
+    setCheckPoints([]);
+  };
+
+  const HandleAddCheckPoint = () => {
+    setCheckPoints((prevState) => {
+      const tempCheckPoint: CheckPoint = {
+        flagTime: stopWatchTime,
+        differenceBetweenLastTime: stopWatchTime, // to do actually calculate the difference between current checkpoint and the last one
+      };
+      return [...prevState, tempCheckPoint];
+    });
   };
 
   const togglePauseButton: ReactNode = isPaused ? (
@@ -88,10 +106,10 @@ const StopWatch: FunctionComponent<StopWatchProps> = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [stopWatchTime,isPaused]);
+  }, [stopWatchTime, isPaused]);
   return (
     <div>
-      <div className={`stop-watch ${isPaused && 'disabled'}`}>
+      <div className={`stop-watch ${isPaused && "disabled"}`}>
         <div className="stop-watch__hours">
           {formatTime(stopWatchTime.hours)}
           <span className="description">hr</span>
@@ -116,6 +134,9 @@ const StopWatch: FunctionComponent<StopWatchProps> = () => {
       <div className="stop-watch__controlles">
         <i className="play-button" onClick={handleTogglePause}>
           {togglePauseButton}
+        </i>
+        <i className="reset-button" onClick={HandleAddCheckPoint}>
+          <RiFlag2Fill />
         </i>
         <i className="reset-button" onClick={resetTimer}>
           <RxReset />

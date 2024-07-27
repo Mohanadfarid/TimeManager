@@ -64,6 +64,7 @@ interface UpdateTimerAction {
 }
 
 type ActionType = AddTimerAction | DeleteTimerAction | UpdateTimerAction;
+
 const timersReducer = (state: TimersState, action: ActionType) => {
   const { type } = action;
   switch (type) {
