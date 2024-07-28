@@ -7,7 +7,8 @@
   font-weight: 400;
   width: 90vw;
   max-width: 600px;
-  margin: 3rem auto;
+  padding: 3rem 0;
+  margin: 0 auto;
   &.disabled{
     color: $darker-grey;
   }

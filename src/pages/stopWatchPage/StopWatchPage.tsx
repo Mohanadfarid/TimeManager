@@ -9,14 +9,14 @@ export interface CheckPoint {
   differenceBetweenLastTime: StopWatch;
 }
 
-export type CheckPoints = CheckPoint[] | []
+export type CheckPoints = CheckPoint[] | [];
 
 const StopWatchPage: FunctionComponent<StopWatchPageProps> = () => {
   const [checkPoints, setCheckPoints] = useState<CheckPoints>([]);
 
   return (
-    <div>
-      <StopWatch setCheckPoints={setCheckPoints}/>
+    <div className="stopwatch-container">
+      <StopWatch setCheckPoints={setCheckPoints} />
       <StopWatchCheckPointsTable checkPoints={checkPoints} />
     </div>
   );

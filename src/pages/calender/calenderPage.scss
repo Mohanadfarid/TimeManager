@@ -3,7 +3,7 @@
     overflow-x: auto; // Ensure the container allows horizontal scrolling
   }
   .view-mode-controller {
-    width: 90vw;
+    width: calc(90vw - 15rem);
     max-width: 1200px;
     margin: auto;
     display: flex;

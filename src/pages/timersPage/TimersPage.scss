@@ -1,7 +1,7 @@
 @import "../../styles/variables.scss";
 .timers-page {
   .timers-container {
-    width: 98vw;
+    width: calc(98vw - 15rem) ;
     min-height: 90vh;
     margin: auto;
     display: flex;

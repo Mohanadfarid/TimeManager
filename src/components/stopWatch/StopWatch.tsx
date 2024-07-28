@@ -109,7 +109,7 @@ const StopWatch: FunctionComponent<StopWatchProps> = ({ setCheckPoints }) => {
   }, [stopWatchTime, isPaused]);
   return (
     <div>
-      <div className={`stop-watch ${isPaused && "disabled"}`}>
+      <div className={`stop-watch ${isPaused && "disabled"}`} >
         <div className="stop-watch__hours">
           {formatTime(stopWatchTime.hours)}
           <span className="description">hr</span>

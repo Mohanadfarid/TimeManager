@@ -1,7 +1,8 @@
 .calender {
   width: 90vw;
   max-width: 900px;
-  margin: 2rem auto;
+  margin: 0 auto;
+  padding: 2rem 0;
   &_month-year-picker {
     display: flex;
     justify-content: space-between;
