@@ -23,7 +23,7 @@
       margin-right: 1rem;
     }
   }
-  
+
   .navbar__link {
     position: relative;
     display: flex;
@@ -58,6 +58,11 @@
 
   .hamburger-menu {
     display: none;
+    position: relative;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+    color: black;
     cursor: pointer;
   }
 
@@ -77,6 +82,29 @@
     }
     .hamburger-menu {
       display: block;
+    }
+  }
+}
+@media only screen and (max-width: 400px) {
+  .navbar {
+    transition: all 0.2s ease ;
+    height: 4rem;
+    .navbar__link{
+      opacity: 1;
+    }
+
+    &.collapsed {
+      width: 100vw;
+      height: 4rem;
+      transition: all 0.2s ease ;
+      .navbar__link{
+        opacity: 0;
+      }
+    }
+    &.expanded {
+      width: 100vw;
+      height: 20rem;
+      transition: all 0.2s ease ;
     }
   }
 }

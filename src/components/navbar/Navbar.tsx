@@ -20,7 +20,7 @@ const Navbar: FunctionComponent<NavbarProps> = () => {
   return (
     <nav className={`navbar ${forceCollapse ? "collapsed" : "expanded"}`}>
       <div
-        className={"navbar__link hamburger-menu"}
+        className={"hamburger-menu"}
         onClick={handleToggleCollapse}
       >
         <IoMenuSharp className={"navbar__icon "} />
