@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+
 .navbar {
   width: 15rem;
   padding: 0 0.3rem;
@@ -12,8 +13,17 @@
   left: 0;
   border-right: 1px solid #e5e5e5;
   transition: all 0.3s ease;
-  
 
+  &.expanded {
+    width: 15rem;
+    .navbar__title {
+      display: block;
+    }
+    .navbar__icon {
+      margin-right: 1rem;
+    }
+  }
+  
   .navbar__link {
     position: relative;
     display: flex;
@@ -46,12 +56,12 @@
     transition: all 0.3s ease;
   }
 
-  .hamburger-menu{
+  .hamburger-menu {
     display: none;
     cursor: pointer;
   }
 
-  .logo-icon{
+  .logo-icon {
     color: $main-blue;
   }
 }
@@ -59,13 +69,13 @@
 @media only screen and (max-width: 880px) {
   .navbar {
     width: 4rem;
-    .navbar__icon{
+    .navbar__icon {
       margin-right: 0;
     }
-    .navbar__title{
+    .navbar__title {
       display: none;
     }
-    .hamburger-menu{
+    .hamburger-menu {
       display: block;
     }
   }

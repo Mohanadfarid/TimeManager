@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./navbar.scss";
 import { CgSandClock } from "react-icons/cg";
@@ -11,12 +11,24 @@ import { FaClock } from "react-icons/fa";
 interface NavbarProps {}
 
 const Navbar: FunctionComponent<NavbarProps> = () => {
+  const [forceCollapse, setForceCollapse] = useState<boolean>(false);
+
+  const handleToggleCollapse = () => {
+    setForceCollapse((prevState) => !prevState);
+  };
+
   return (
-    <nav className="navbar">
-      <div className={"navbar__link"}>
-        <IoMenuSharp className={"navbar__icon hamburger-menu"} />
+    <nav className={`navbar ${forceCollapse ? "collapsed" : "expanded"}`}>
+      <div
+        className={"navbar__link hamburger-menu"}
+        onClick={handleToggleCollapse}
+      >
+        <IoMenuSharp className={"navbar__icon "} />
+      </div>
+
+      <div className="navbar__link">
         <span className={"navbar__title"}>
-        <FaClock className={'navbar__icon logo-icon'} />
+          <FaClock className={"navbar__icon logo-icon"} />
           TimeManager
         </span>
       </div>
