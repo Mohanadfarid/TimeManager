@@ -10,10 +10,10 @@ import { FaClock } from "react-icons/fa";
 
 import { useTranslation } from "react-i18next";
 
-const lngs = {
-  en: { nativeName: "English" },
-  ar: { nativeName: "Arabic" },
-};
+// const lngs = {
+//   en: { nativeName: "English" },
+//   ar: { nativeName: "Arabic" },
+// };
 
 interface NavbarProps {}
 
