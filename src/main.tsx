@@ -9,6 +9,8 @@ import AlarmPage from "./pages/alarm/AlarmPage.tsx";
 import CalenderPage from "./pages/calender/CalenderPage.tsx";
 import RootLayout from "./layouts/RootLayout.tsx"
 
+import './i18n.ts';
+
 const router = createBrowserRouter([
   {
     path: "/",
