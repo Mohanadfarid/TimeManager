@@ -19,6 +19,9 @@
     .navbar__title {
       display: block;
     }
+    .navbar__actions {
+      display: flex;
+    }
     .navbar__icon {
       margin-right: 1rem;
     }
@@ -69,6 +72,23 @@
   .logo-icon {
     color: $main-blue;
   }
+
+  .navbar__actions{
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+  }
+  .navbar__actions button{
+    margin: 0 0.2rem;
+    padding: 0.4rem;
+    border: 2px solid $main-blue;
+    color: $main-blue;
+    cursor: pointer;
+
+    &:active{
+      transform: scale(0.9);
+    }
+  }
 }
 
 @media only screen and (max-width: 880px) {
@@ -78,6 +98,9 @@
       margin-right: 0;
     }
     .navbar__title {
+      display: none;
+    }
+    .navbar__actions {
       display: none;
     }
     .hamburger-menu {
@@ -103,7 +126,7 @@
     }
     &.expanded {
       width: 100vw;
-      height: 20rem;
+      height: 21rem;
       transition: all 0.2s ease ;
     }
   }
