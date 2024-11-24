@@ -1,5 +1,5 @@
 .calender {
-  width: 90vw;
+  width: calc(98vw - 21rem);
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem 0;
@@ -51,4 +51,11 @@
       background-color: lightblue;
     }
   }
+}
+
+@media only screen and (max-width: 880px) {
+  .calender {
+    width: calc(98vw - 4rem);
+  }
+
 }
