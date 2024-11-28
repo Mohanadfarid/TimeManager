@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .calender {
   width: calc(98vw - 21rem);
   max-width: 900px;
@@ -48,7 +50,11 @@
       cursor: pointer;
     }
     &.active {
-      background-color: lightblue;
+      background-color: $main-blue;
+      color: white;
+    }
+    &.has-event{
+      border: 1px solid $main-blue;
     }
   }
 }

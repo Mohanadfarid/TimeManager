@@ -3,6 +3,7 @@ import "./calender.scss";
 
 import { getDay, getDaysInMonth } from "date-fns";
 import { DateType } from "../../pages/calender/CalenderPage";
+import { type Holiday } from "../../hooks/useGetHolidays";
 
 const daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"];
 const monthsOfYear = [
@@ -21,15 +22,16 @@ const monthsOfYear = [
 ];
 
 interface CalenderProps {
-  date: DateType ;
+  date: DateType;
+  holidays: Holiday[];
   changeDateHandler: (year?: number, month?: number, day?: number) => void;
 }
 
 const Calender: FunctionComponent<CalenderProps> = ({
   date,
+  holidays,
   changeDateHandler,
 }) => {
-  
   const numberOfDaysInCurrentMonth = getDaysInMonth(
     new Date(date.year, date.month - 1)
   );
@@ -45,6 +47,14 @@ const Calender: FunctionComponent<CalenderProps> = ({
     new Date(date.year, date.month - 2) // -1 to get the right month and another -1 to get the prev month
   );
 
+  const doesDayHaveEvent = (day?: number) => {
+    if (day) {
+      const filterdHolidays= holidays.filter((holiday) => holiday.date.datetime?.day === day);
+      if (filterdHolidays.length > 0) return true;
+    }
+    return false;
+  };
+
   const increaseMonthHandler = () => {
     if (date.month === 12) {
       changeDateHandler(date.year + 1, 1, undefined);
@@ -52,7 +62,7 @@ const Calender: FunctionComponent<CalenderProps> = ({
       changeDateHandler(undefined, date.month + 1, undefined);
     }
   };
-  
+
   const decreaseMonthHandler = () => {
     if (date.month === 1) {
       changeDateHandler(date.year - 1, 12, undefined);
@@ -100,7 +110,8 @@ const Calender: FunctionComponent<CalenderProps> = ({
           <div
             className={`cell current-month-cell ${
               index + 1 === date.day && "active"
-            }`}
+            }
+            ${doesDayHaveEvent(index + 1)?'has-event':''}`}
             key={index}
             onClick={() => {
               changeDateHandler(undefined, undefined, index + 1);

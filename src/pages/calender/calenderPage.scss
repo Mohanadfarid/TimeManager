@@ -1,3 +1,5 @@
+
+@import '../../styles/variables.scss';
 .calender-page {
   .page-container {
     overflow-x: auto; // Ensure the container allows horizontal scrolling
@@ -22,14 +24,15 @@
     font-weight: bold;
     font-size: 1rem;
     border-radius: 1rem;
-    border: 0;
-    background-color: lightblue;
-    color: white;
+    border: 1px solid $main-blue;
+    background-color: white;
+    color: $main-blue;
     cursor: pointer;
   }
   .btn:hover,
   .btn.active {
-    background-color: rgb(72, 173, 207);
+    background-color: $main-blue;
+    color: white;
   }
   .btn:active {
     transform: scale(0.9);

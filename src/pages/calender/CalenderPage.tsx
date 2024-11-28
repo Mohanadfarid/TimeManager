@@ -48,7 +48,7 @@ const CalenderPage: FunctionComponent<CalenderPageProps> = () => {
 
   return (
     <div className="calender-page page-container">
-      <Calender date={date} changeDateHandler={ChangeDateHandler} />
+      <Calender date={date} holidays={holidays.holidaysInMonth} changeDateHandler={ChangeDateHandler} />
       <div className="view-mode-controller">
         <span className="info">show holidays in</span>
         <span className="btns-container">

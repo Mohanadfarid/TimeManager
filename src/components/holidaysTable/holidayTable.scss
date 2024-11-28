@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .table-wrapper {
   overflow-x: auto;
   width: 100%;
@@ -15,10 +17,11 @@
     padding: 1rem;
   }
   tr:nth-of-type(even) {
-    background-color: rgba(173, 216, 230, 0.315);
+    background-color: #005a9e49;
   }
 
   thead tr {
-    background-color: lightblue;
+    background-color: $main-blue;
+    color: white;
   }
 }
