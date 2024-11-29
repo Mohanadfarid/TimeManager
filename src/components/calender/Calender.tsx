@@ -4,22 +4,24 @@ import "./calender.scss";
 import { getDay, getDaysInMonth } from "date-fns";
 import { DateType } from "../../pages/calender/CalenderPage";
 import { type Holiday } from "../../hooks/useGetHolidays";
+import { useTranslation } from "react-i18next";
 
-const daysOfWeek = ["S", "M", "T", "W", "T", "F", "S"];
+const daysOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 const monthsOfYear = [
-  "JANUARY",
-  "FEBRUARY",
-  "MARCH",
-  "APRIL",
-  "MAY",
-  "JUNE",
-  "JULY",
-  "AUGUST",
-  "SEPTEMBER",
-  "OCTOBER",
-  "NOVEMBER",
-  "DECEMBER",
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december",
 ];
+
 
 interface CalenderProps {
   date: DateType;
@@ -32,6 +34,8 @@ const Calender: FunctionComponent<CalenderProps> = ({
   holidays,
   changeDateHandler,
 }) => {
+
+  const {t} = useTranslation()
   const numberOfDaysInCurrentMonth = getDaysInMonth(
     new Date(date.year, date.month - 1)
   );
@@ -78,7 +82,7 @@ const Calender: FunctionComponent<CalenderProps> = ({
           {"<<"}
         </div>
         <div>
-          {monthsOfYear[date.month - 1]} {date.year}
+          {t(`monthes_of_year.${monthsOfYear[date.month - 1]}`)} {date.year}
         </div>
         <div className="monthes-controller" onClick={increaseMonthHandler}>
           {">>"}
@@ -89,7 +93,7 @@ const Calender: FunctionComponent<CalenderProps> = ({
         {/* looping over the days of the week */}
         {daysOfWeek.map((day, index) => (
           <div className="cell day-of-week" key={index}>
-            {day}
+            {t(`days_of_week.${day}`)}
           </div>
         ))}
 

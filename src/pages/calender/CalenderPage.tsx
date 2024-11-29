@@ -3,6 +3,8 @@ import Calender from "../../components/calender/Calender";
 import "./calenderPage.scss";
 import useGetEvents, { Holiday } from "../../hooks/useGetHolidays";
 import HolidayTable from "../../components/holidaysTable/HolidayTable";
+import { useTranslation } from "react-i18next";
+
 
 interface CalenderPageProps {}
 
@@ -30,6 +32,8 @@ const CalenderPage: FunctionComponent<CalenderPageProps> = () => {
     day: currentDate.getDate(),
   });
 
+  const {t} = useTranslation()
+
   const [viewMode, setviewMode] = useState<ViewMode>("holidaysInYear");
 
   const holidays: Holidays = useGetEvents(date.year, date.month, date.day);
@@ -50,25 +54,25 @@ const CalenderPage: FunctionComponent<CalenderPageProps> = () => {
     <div className="calender-page page-container">
       <Calender date={date} holidays={holidays.holidaysInMonth} changeDateHandler={ChangeDateHandler} />
       <div className="view-mode-controller">
-        <span className="info">show holidays in</span>
+        <span className="info">{t('show_holidays_in')}</span>
         <span className="btns-container">
           <button
             className={`btn ${viewMode === "holidaysInYear" ? "active" : ""}`}
             onClick={() => setviewMode("holidaysInYear")}
           >
-            year {date.year}
+            {t('year')} {date.year}
           </button>
           <button
             className={`btn ${viewMode === "holidaysInMonth" ? "active" : ""}`}
             onClick={() => setviewMode("holidaysInMonth")}
           >
-            month {date.month}
+            {t('month')} {date.month}
           </button>
           <button
             className={`btn ${viewMode === "holidaysInDay" ? "active" : ""}`}
             onClick={() => setviewMode("holidaysInDay")}
           >
-            day {date.day}
+            {t('day')} {date.day}
           </button>
         </span>
       </div>

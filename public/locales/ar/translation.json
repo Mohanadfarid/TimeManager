@@ -2,5 +2,36 @@
   "timers": "المؤقتات",
   "alarm": "المنبه",
   "stopwatch": "ساعة التوقيت",
-  "calender": "التقويم"
+  "calender": "التقويم",
+  "show_holidays_in": "عرض العطلات في",
+  "year": "سنة",
+  "month": "شهر",
+  "day": "يوم",
+  "name": "الاسم",
+  "description": "الوصف",
+  "date": "التاريخ",
+  "type": "النوع",
+  "days_of_week": {
+    "sun": "أحد",
+    "mon": "اثنين",
+    "tue": "ثلاثاء",
+    "wed": "أربعاء",
+    "thu": "خميس",
+    "fri": "جمعة",
+    "sat": "سبت"
+  },
+  "monthes_of_year": {
+    "january": "يناير",
+    "february": "فبراير",
+    "march": "مارس",
+    "april": "أبريل",
+    "may": "مايو",
+    "june": "يونيو",
+    "july": "يوليو",
+    "august": "أغسطس",
+    "september": "سبتمبر",
+    "october": "أكتوبر",
+    "november": "نوفمبر",
+    "december": "ديسمبر"
+  }
 }

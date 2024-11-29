@@ -1,21 +1,23 @@
 import { FunctionComponent } from "react";
 import { Holiday } from "../../hooks/useGetHolidays";
 import "./holidayTable.scss";
+import { useTranslation } from "react-i18next";
 
 interface HolidayTableProps {
   holidays: Holiday[];
 }
 
 const HolidayTable: FunctionComponent<HolidayTableProps> = ({ holidays }) => {
+  const {t} = useTranslation()
   return (
     <div className="table-wrapper">
       <table className="holiday-table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Type</th>
+            <th>{t('name')}</th>
+            <th>{t('description')}</th>
+            <th>{t('date')}</th>
+            <th>{t('type')}</th>
           </tr>
         </thead>
         <tbody>

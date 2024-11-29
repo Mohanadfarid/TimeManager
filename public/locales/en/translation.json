@@ -2,5 +2,36 @@
   "timers": "timers",
   "alarm": "alarm",
   "stopwatch": "stopwatch",
-  "calender": "calender"
+  "calender": "calender",
+  "show_holidays_in": "show holidays in",
+  "year": "year",
+  "month": "month",
+  "day": "day",
+  "name": "Name",
+  "description": "Description",
+  "date": "Date",
+  "type": "Type",
+  "days_of_week": {
+    "sun": "Sun",
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat"
+  },
+  "monthes_of_year": {
+    "january": "JANUARY",
+    "february": "FEBRUARY",
+    "march": "MARCH",
+    "april": "APRIL",
+    "may": "MAY",
+    "june": "JUNE",
+    "july": "JULY",
+    "august": "AUGUST",
+    "september": "SEPTEMBER",
+    "october": "OCTOBER",
+    "november": "NOVEMBER",
+    "december": "DECEMBER"
+  }
 }
