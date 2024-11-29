@@ -10,6 +10,7 @@ import CalenderPage from "./pages/calender/CalenderPage.tsx";
 import RootLayout from "./layouts/RootLayout.tsx"
 
 import './i18n.ts';
+import { Suspense } from "react";
 
 const router = createBrowserRouter([
   {
@@ -41,5 +42,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <RouterProvider router={router} />
+  <Suspense fallback="loading">
+    <RouterProvider router={router} />
+  </Suspense>
 );
