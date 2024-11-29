@@ -1,13 +1,14 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .table-wrapper {
   overflow-x: auto;
-  width: 100%;
+  width: calc(100vw - 15rem);
 }
 
-.holiday-table {
+.holiday-table,
+.check-points-table {
   overflow-x: auto;
-  width: 90vw;
+  width: 100%;
   max-width: 1200px;
   margin: 2rem auto;
   border-collapse: collapse;
@@ -23,5 +24,17 @@
   thead tr {
     background-color: $main-blue;
     color: white;
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .table-wrapper {
+    width: calc(100vw - 4rem);
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .table-wrapper {
+    width: 100%
   }
 }

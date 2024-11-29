@@ -33,5 +33,15 @@
     "october": "OCTOBER",
     "november": "NOVEMBER",
     "december": "DECEMBER"
-  }
+  },
+  "time": {
+    "hr": "hr",
+    "min": "min",
+    "sec": "sec"
+  },
+  "laps": "Laps",
+  "Time": "Time",
+  "total": "Total",
+  "fastest": "Fastest",
+  "slowest": "Slowest"
 }

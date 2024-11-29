@@ -1,6 +1,7 @@
 @import "../../styles/variables.scss";
 
 .navbar {
+  z-index: 5;
   width: 15rem;
   padding: 0 0.3rem;
   padding-top: 1rem;
@@ -73,19 +74,19 @@
     color: $main-blue;
   }
 
-  .navbar__actions{
+  .navbar__actions {
     padding: 0.5rem 0;
     display: flex;
     justify-content: center;
   }
-  .navbar__actions button{
+  .navbar__actions button {
     margin: 0 0.2rem;
     padding: 0.4rem;
     border: 2px solid $main-blue;
     color: $main-blue;
     cursor: pointer;
 
-    &:active{
+    &:active {
       transform: scale(0.9);
     }
   }
@@ -110,24 +111,25 @@
 }
 @media only screen and (max-width: 400px) {
   .navbar {
-    transition: all 0.2s ease ;
+    transition: all 0.2s ease;
     height: 4rem;
-    .navbar__link{
+    .navbar__link {
       opacity: 1;
     }
 
     &.collapsed {
       width: 100vw;
       height: 4rem;
-      transition: all 0.2s ease ;
-      .navbar__link{
+      transition: all 0.2s ease;
+      .navbar__link {
+        display: none;
         opacity: 0;
       }
     }
     &.expanded {
       width: 100vw;
       height: 21rem;
-      transition: all 0.2s ease ;
+      transition: all 0.2s ease;
     }
   }
 }

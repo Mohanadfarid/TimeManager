@@ -9,6 +9,7 @@ import {
   CheckPoint,
   CheckPoints,
 } from "../../pages/stopWatchPage/StopWatchPage";
+import { useTranslation } from "react-i18next";
 
 interface StopWatchProps {
   setCheckPoints: React.Dispatch<React.SetStateAction<CheckPoints>>;
@@ -21,6 +22,7 @@ interface StopWatch {
 }
 
 const StopWatch: FunctionComponent<StopWatchProps> = ({ setCheckPoints }) => {
+  const {t} = useTranslation()
   const [isPaused, setIsPaused] = useState<boolean>(true);
 
   const [stopWatchTime, setStopWatchTime] = useState<StopWatch>({
@@ -112,17 +114,17 @@ const StopWatch: FunctionComponent<StopWatchProps> = ({ setCheckPoints }) => {
       <div className={`stop-watch ${isPaused && "disabled"}`} >
         <div className="stop-watch__hours">
           {formatTime(stopWatchTime.hours)}
-          <span className="description">hr</span>
+          <span className="description">{t('time.hr')}</span>
         </div>
         <span className="seprator">:</span>
         <div className="stop-watch__minutes">
           {formatTime(stopWatchTime.minutes)}
-          <span className="description">min</span>
+          <span className="description">{t('time.min')}</span>
         </div>
         <span className="seprator">:</span>
         <div className="stop-watch__seconds">
           {formatTime(stopWatchTime.seconds)}
-          <span className="description">sec</span>
+          <span className="description">{t('time.sec')}</span>
         </div>
         .
         <div className="stop-watch__milliseconds">

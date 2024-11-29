@@ -5,11 +5,11 @@
   align-items: top;
   font-size: 6rem;
   font-weight: 400;
-  width: 90vw;
+  width: calc(90vw - 15rem);
   max-width: 600px;
   padding: 3rem 0;
   margin: 0 auto;
-  &.disabled{
+  &.disabled {
     color: $darker-grey;
   }
   .description {
@@ -59,6 +59,16 @@
 
     &:hover {
       background-color: $dark-grey;
+    }
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .stop-watch {
+    width: calc(90vw - 4rem);
+    font-size: 3rem;
+    .stop-watch__milliseconds {
+      font-size: 2rem;
     }
   }
 }
