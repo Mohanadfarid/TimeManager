@@ -1,4 +1,4 @@
-import { type StopWatch } from "../components/stopWatch/StopWatch";
+import { StopWatch } from "../components/stopWatch/StopWatch";
 
 export const formatTime = (value: number) => {
   return value.toString().padStart(2, "0");
