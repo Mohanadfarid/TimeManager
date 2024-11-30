@@ -1,6 +1,9 @@
 import { FunctionComponent, ReactNode, useEffect, useState } from "react";
 import "./stopWatch.scss";
-import { formatTime } from "../../utils/timerUtils";
+import {
+  differenceBetweenTwoStopWatchTimes,
+  formatTime,
+} from "../../utils/timerUtils";
 import { BiSolidCaretRightCircle } from "react-icons/bi";
 import { FaCirclePause } from "react-icons/fa6";
 import { RxReset } from "react-icons/rx";
@@ -11,10 +14,17 @@ import {
 } from "../../pages/stopWatchPage/StopWatchPage";
 import { useTranslation } from "react-i18next";
 
+const emptyStopWatchTime = {
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  milliseconds: 0,
+};
+
 interface StopWatchProps {
   setCheckPoints: React.Dispatch<React.SetStateAction<CheckPoints>>;
 }
-interface StopWatch {
+export interface StopWatch {
   hours: number;
   minutes: number;
   seconds: number;
@@ -22,8 +32,10 @@ interface StopWatch {
 }
 
 const StopWatch: FunctionComponent<StopWatchProps> = ({ setCheckPoints }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const [isPaused, setIsPaused] = useState<boolean>(true);
+  const [fastestLapIndex, setFastestLapIndex] = useState<number | null>(null);
+  const [slowestLapIndex, setSlowestLapIndex] = useState<number | null>(null);
 
   const [stopWatchTime, setStopWatchTime] = useState<StopWatch>({
     hours: 0,
@@ -80,13 +92,25 @@ const StopWatch: FunctionComponent<StopWatchProps> = ({ setCheckPoints }) => {
   };
 
   const HandleAddCheckPoint = () => {
-    setCheckPoints((prevState) => {
-      const tempCheckPoint: CheckPoint = {
-        flagTime: stopWatchTime,
-        differenceBetweenLastTime: stopWatchTime, // to do actually calculate the difference between current checkpoint and the last one
-      };
-      return [...prevState, tempCheckPoint];
-    });
+    if (!isPaused) {
+      // adding the checkpoint to the table
+      setCheckPoints((prevState) => {
+        const prevCheckpoint =
+          prevState.length > 0 ? prevState[prevState.length - 1] : null;
+        const tempCheckPoint: CheckPoint = {
+          flagTime: {...stopWatchTime},
+          differenceBetweenLastTime: prevCheckpoint
+            ? differenceBetweenTwoStopWatchTimes(
+                stopWatchTime,
+                prevCheckpoint.flagTime
+              )
+            : { ...emptyStopWatchTime },
+        };
+        return [...prevState, tempCheckPoint];
+      });
+
+      // to do setting the fastest and lowest laps
+    }
   };
 
   const togglePauseButton: ReactNode = isPaused ? (
@@ -111,20 +135,20 @@ const StopWatch: FunctionComponent<StopWatchProps> = ({ setCheckPoints }) => {
   }, [stopWatchTime, isPaused]);
   return (
     <div>
-      <div className={`stop-watch ${isPaused && "disabled"}`} >
+      <div className={`stop-watch ${isPaused && "disabled"}`}>
         <div className="stop-watch__hours">
           {formatTime(stopWatchTime.hours)}
-          <span className="description">{t('time.hr')}</span>
+          <span className="description">{t("time.hr")}</span>
         </div>
         <span className="seprator">:</span>
         <div className="stop-watch__minutes">
           {formatTime(stopWatchTime.minutes)}
-          <span className="description">{t('time.min')}</span>
+          <span className="description">{t("time.min")}</span>
         </div>
         <span className="seprator">:</span>
         <div className="stop-watch__seconds">
           {formatTime(stopWatchTime.seconds)}
-          <span className="description">{t('time.sec')}</span>
+          <span className="description">{t("time.sec")}</span>
         </div>
         .
         <div className="stop-watch__milliseconds">

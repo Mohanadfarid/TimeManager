@@ -17,9 +17,9 @@ const StopWatchCheckPointsTable: FunctionComponent<
       <table className="check-points-table">
         <thead>
           <tr>
-            <th>{t('laps')}</th>
-            <th>{t('Time')}</th>
-            <th>{t('total')}</th>
+            <th>{t("laps")}</th>
+            <th>{t("Time")}</th>
+            <th>{t("total")}</th>
           </tr>
         </thead>
         <tbody>
@@ -28,15 +28,13 @@ const StopWatchCheckPointsTable: FunctionComponent<
               return (
                 <tr key={idx}>
                   <td>
-                    {idx + 1} <span>({t('fastest')})</span>
+                    {idx + 1} <span>({t("fastest")})</span>
                   </td>
                   <td>
-                    {formatTime(checkPoint.differenceBetweenLastTime.hours)}:
-                    {formatTime(checkPoint.differenceBetweenLastTime.minutes)}:
-                    {formatTime(checkPoint.differenceBetweenLastTime.seconds)}:
-                    {formatTime(
-                      checkPoint.differenceBetweenLastTime.milliseconds
-                    )}
+                    {formatTime(checkPoint.flagTime.hours)}:
+                    {formatTime(checkPoint.flagTime.minutes)}:
+                    {formatTime(checkPoint.flagTime.seconds)}:
+                    {formatTime(checkPoint.flagTime.milliseconds)}
                   </td>
                   <td>
                     {formatTime(checkPoint.differenceBetweenLastTime.hours)}:
