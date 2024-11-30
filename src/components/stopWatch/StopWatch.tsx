@@ -34,8 +34,8 @@ export interface StopWatchType {
 const StopWatch: FunctionComponent<StopWatchProps> = ({ setCheckPoints }) => {
   const { t } = useTranslation();
   const [isPaused, setIsPaused] = useState<boolean>(true);
-  const [fastestLapIndex, setFastestLapIndex] = useState<number | null>(null);
-  const [slowestLapIndex, setSlowestLapIndex] = useState<number | null>(null);
+  // const [fastestLapIndex, setFastestLapIndex] = useState<number | null>(null);
+  // const [slowestLapIndex, setSlowestLapIndex] = useState<number | null>(null);
 
   const [stopWatchTime, setStopWatchTime] = useState<StopWatchType>({
     hours: 0,
