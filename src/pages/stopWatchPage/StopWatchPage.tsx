@@ -1,12 +1,12 @@
 import { FunctionComponent, useState } from "react";
-import StopWatch from "../../components/stopWatch/StopWatch";
+import StopWatch, { StopWatchType } from "../../components/stopWatch/StopWatch";
 import StopWatchCheckPointsTable from "../../components/stopWatchCheckPointsTable/StopWatchCheckPointsTable";
 
 interface StopWatchPageProps {}
 
 export interface CheckPoint {
-  flagTime: StopWatch;
-  differenceBetweenLastTime: StopWatch;
+  flagTime: StopWatchType;
+  differenceBetweenLastTime: StopWatchType;
 }
 
 export type CheckPoints = CheckPoint[] | [];

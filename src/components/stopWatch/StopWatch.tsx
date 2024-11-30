@@ -24,7 +24,7 @@ const emptyStopWatchTime = {
 interface StopWatchProps {
   setCheckPoints: React.Dispatch<React.SetStateAction<CheckPoints>>;
 }
-export interface StopWatch {
+export interface StopWatchType {
   hours: number;
   minutes: number;
   seconds: number;
@@ -37,7 +37,7 @@ const StopWatch: FunctionComponent<StopWatchProps> = ({ setCheckPoints }) => {
   const [fastestLapIndex, setFastestLapIndex] = useState<number | null>(null);
   const [slowestLapIndex, setSlowestLapIndex] = useState<number | null>(null);
 
-  const [stopWatchTime, setStopWatchTime] = useState<StopWatch>({
+  const [stopWatchTime, setStopWatchTime] = useState<StopWatchType>({
     hours: 0,
     minutes: 0,
     seconds: 0,

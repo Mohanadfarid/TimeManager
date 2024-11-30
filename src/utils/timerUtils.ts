@@ -1,10 +1,10 @@
-import { StopWatch } from "../components/stopWatch/StopWatch";
+import { StopWatchType } from "../components/stopWatch/StopWatch";
 
 export const formatTime = (value: number) => {
   return value.toString().padStart(2, "0");
 };
 
-export const transfromStopWatchTimeToSeconds = (value: StopWatch) => {
+export const transfromStopWatchTimeToSeconds = (value: StopWatchType) => {
   const hoursInSeconds = value.hours * 60 * 60;
   const minutesInSeconds = value.minutes * 60;
   const millisecondsInSeconds = value.milliseconds / 1000;
@@ -15,9 +15,9 @@ export const transfromStopWatchTimeToSeconds = (value: StopWatch) => {
 };
 
 export const differenceBetweenTwoStopWatchTimes = (
-  time1: StopWatch,
-  time2: StopWatch
-): StopWatch => {
+  time1: StopWatchType,
+  time2: StopWatchType
+): StopWatchType => {
   const differenceInSeconds = Math.abs(
     transfromStopWatchTimeToSeconds(time1) -
       transfromStopWatchTimeToSeconds(time2)
